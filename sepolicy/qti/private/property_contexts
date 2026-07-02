@@ -1,4 +1,7 @@
 # Audio
+audio.sys.mute.latency.factor           u:object_r:exported_system_prop:s0
+audio.sys.noisy.broadcast.delay         u:object_r:exported_system_prop:s0
+audio.sys.offload.pstimeout.secs        u:object_r:exported_system_prop:s0
 ro.oplus.audio.aidl_volume    u:object_r:exported_system_prop:s0
 sys.oplus_ftm_mode            u:object_r:exported_system_prop:s0
 
@@ -7,6 +10,7 @@ oplus.autotest.                u:object_r:exported_system_prop:s0
 persist.sys.oplus.autotest.    u:object_r:exported_system_prop:s0
 
 # Bluetooth
+persist.bluetooth.a2dp_aac_abr.enable   u:object_r:exported_bluetooth_prop:s0
 persist.sys.bt.a2dp.pendingtime    u:object_r:exported_system_prop:s0
 
 # Camera
@@ -86,3 +90,8 @@ ro.build.release_type            u:object_r:exported_system_prop:s0
 ro.oplusupgrade.alpha.version    u:object_r:exported_system_prop:s0
 ro.separate.soft                 u:object_r:system_oplus_project_prop:s0
 ro.version.confidential          u:object_r:exported_system_prop:s0
+ro.product.marketname            u:object_r:exported_system_prop:s0
+
+# WCNSS
+ro.vendor.vold.serialno                               u:object_r:vendor_vold_prop:s0
+vendor.vold.serialno                                  u:object_r:vendor_vold_prop:s0

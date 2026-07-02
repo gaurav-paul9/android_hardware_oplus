@@ -51,13 +51,11 @@ bool setDeviceSpecificMode(Mode type, bool enabled) {
                 contents &= ~OplusTouchConstants::DOUBLE_TAP_GESTURE;
             }
 
-            int aidl_return = 0;
-            oplusTouch->touchWriteNodeFile(OplusTouchConstants::DEFAULT_TP_IC_ID,
-                                           OplusTouchConstants::DOUBLE_TAP_ENABLE_NODE, "1",
-                                           &aidl_return);
-            oplusTouch->touchWriteNodeFile(OplusTouchConstants::DEFAULT_TP_IC_ID,
-                                           OplusTouchConstants::DOUBLE_TAP_INDEP_NODE,
-                                           std::to_string(contents), &aidl_return);
+            oplusTouch->touchWriteNodeFileOneWay(OplusTouchConstants::DEFAULT_TP_IC_ID,
+                                                 OplusTouchConstants::DOUBLE_TAP_ENABLE_NODE, "1");
+            oplusTouch->touchWriteNodeFileOneWay(OplusTouchConstants::DEFAULT_TP_IC_ID,
+                                                 OplusTouchConstants::DOUBLE_TAP_INDEP_NODE,
+                                                 std::to_string(contents));
             return true;
         }
         default:

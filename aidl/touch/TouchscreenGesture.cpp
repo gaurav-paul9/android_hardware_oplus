@@ -62,13 +62,11 @@ ndk::ScopedAStatus TouchscreenGesture::setGestureEnabled(const Gesture& gesture,
     }
 
     if (mOplusTouch) {
-        int aidl_return = 0;
-        mOplusTouch->touchWriteNodeFile(OplusTouchConstants::DEFAULT_TP_IC_ID,
-                                        OplusTouchConstants::DOUBLE_TAP_ENABLE_NODE, "1",
-                                        &aidl_return);
-        mOplusTouch->touchWriteNodeFile(OplusTouchConstants::DEFAULT_TP_IC_ID,
-                                        OplusTouchConstants::DOUBLE_TAP_INDEP_NODE,
-                                        std::to_string(contents), &aidl_return);
+        mOplusTouch->touchWriteNodeFileOneWay(OplusTouchConstants::DEFAULT_TP_IC_ID,
+                                              OplusTouchConstants::DOUBLE_TAP_ENABLE_NODE, "1");
+        mOplusTouch->touchWriteNodeFileOneWay(OplusTouchConstants::DEFAULT_TP_IC_ID,
+                                              OplusTouchConstants::DOUBLE_TAP_INDEP_NODE,
+                                              std::to_string(contents));
     } else if (!WriteStringToFile(std::to_string(contents), kGestureEnableIndepPath, true)) {
         return ndk::ScopedAStatus::fromExceptionCode(EX_UNSUPPORTED_OPERATION);
     }
